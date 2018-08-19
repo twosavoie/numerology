@@ -40,23 +40,39 @@ def get_message(birth_path_num)
     end
 end
 
+def setup_index_view
+  birthdate = params[:birthdate]
+  birth_path_num = get_birth_path_num(birthdate)
+  @message = get_message(birth_path_num)
+  "#{@message}"
+end
+
+post '/' do
+  setup_index_view
+end
+
 get '/' do
   erb :form
 end
 
-post '/' do
-  "#{params}"
-end
-
-
-#get '/newpage' do # why not '/:newpage' ?
-  # contents of your new page
-#  erb :newpage
-#end
-
+# not necessary to script(form). allowed url localhost:4567/birthdate entered by user. however, testing does not work unless it is included.
 get '/:birthdate' do
   birthdate = params[:birthdate]
   birth_path_num = get_birth_path_num(birthdate)
   @message = get_message(birth_path_num)
   erb :index
 end
+
+# not necessary to script. replaced by setup_index_view method. this works though
+#post '/' do
+#  birthdate = params[:birthdate]
+#  birth_path_num = get_birth_path_num(birthdate)
+#  @message = get_message(birth_path_num)
+#  "#{@message}"
+#end
+
+# not necessary to script. just creating a second page
+#get '/newpage' do # why not '/:newpage' ?
+  # contents of your new page
+#  erb :newpage
+#end
