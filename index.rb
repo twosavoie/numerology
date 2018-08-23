@@ -40,16 +40,7 @@ def get_message(birth_path_num)
     end
 end
 
-#def setup_index_view
-#  birthdate = params[:birthdate]
-#  birth_path_num = get_birth_path_num(birthdate)
-#  @message = get_message(birth_path_num)
-#  "#{@message}"
-#end
 
-#post '/' do
-#  setup_index_view
-#end
 
 get '/' do
   erb :form
@@ -86,4 +77,15 @@ end
 #get '/newpage' do # why not '/:newpage' ?
   # contents of your new page
 #  erb :newpage
+#end
+
+# not necessary, function replaced, works though
+#def setup_index_view
+#  birthdate = params[:birthdate]
+#  birth_path_num = get_birth_path_num(birthdate)
+#  @message = get_message(birth_path_num)
+#  "#{@message}"
+#end
+#post '/' do
+#  setup_index_view
 #end
